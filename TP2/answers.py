@@ -19,7 +19,8 @@ def answer_01(data):
 
     """
     # TODO : standardize data
-    scaled_data = data
+    data_scaled = data.copy()
+    data_scaled.iloc[:,:-1]=(data.iloc[:, :-1]- data.iloc[:, :-1].mean())/(data.iloc[:, :-1].std())
     return scaled_data
 
 
@@ -32,9 +33,9 @@ def answer_02():
         nearest_neighbors class
     """
     # Wrong classifier
-    from sklearn.naive_bayes import GaussianNB
-
-    return GaussianNB
+    from sklearn.neighbors import KNeighborsClassifier as sklearn_model
+    
+    return sklearn_model
 
 
 def answer_03():
